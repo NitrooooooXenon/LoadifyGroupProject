@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="LogInPage.css">
+        <link rel="shortcut icon" type="image/icon" href="Images/Logo.png"/>
+        <script src="LogInPageCOpy.js"></script>
+        <title>Loadify</title>
+    </head>
+    <body>
+        <!-- Login Form (Default View) -->
+        <div class="intro">
+            <img src="images/Logo.png">
+        </div>
+        <div class="content" id="loginContent">
+            <p>Login to your account</p>
+            <input type="text" name="email" id="email" placeholder="Email or phone number"><br>
+            <input type="password" name="pass" id="pass" placeholder="Password"><br>
+            <input type="submit" name="login" id="login" value="Log In" onclick="Login()"><br>
+            <p class="ind" id="ind"></p>
+            
+            <a href="#" onclick="togglePassword()">Forgot password?</a><br>
+            <p class="footer">- or sign up with -</p>
+            <a href="#"><img src="Images/Google.png"></a>
+            <a href="#"><img src="Images/Facebook.png"></a>
+            <p class="newacc">Don't have an account? <a href="#" onclick="showRegister()">Sign up</a></p>
+        </div>
+
+        <!-- Register Form (Hidden by Default) -->
+        <div class="content register-content" id="registerContent" style="display: none;">
+            <p>Create new account</p>
+            <input type="text" name="fullname" id="fullname" placeholder="Full Name"><br>
+            <input type="text" name="email" id="regEmail" placeholder="Email"><br>
+            <input type="tel" name="phone" id="phone" placeholder="Phone Number"><br>
+            <input type="password" name="pass" id="regPass" placeholder="Password"><br>
+            <input type="password" name="confpass" id="confPass" placeholder="Confirm Password"><br>
+            <input type="submit" name="register" id="registerBtn" value="Sign Up" onclick="Register()"><br>
+            <p class="ind" id="regInd"></p>
+            
+            <p class="footer">- or sign up with -</p>
+            <a href="#"><img src="Images/Google.png"></a>
+            <a href="#"><img src="Images/Facebook.png"></a>
+            <p class="newacc">Already have an account? <a href="#" onclick="showLogin()">Log In</a></p>
+        </div>
+    </body>
+</html>

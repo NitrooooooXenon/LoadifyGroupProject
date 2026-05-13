@@ -1,0 +1,400 @@
+  <html>
+      <head>
+          <meta charset="utf-8" />
+          <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+          <link rel="shortcut icon" type="image/icon" href="Images/Logo.png"/>
+          <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800;900&display=swap" rel="stylesheet" />
+          <script src="TestMain.js"></script>
+          <title>LOADIFY BY G4</title>
+          <link rel="stylesheet" href="MainCSS.css">
+          <link rel="stylesheef" href="admin.css">
+
+      </head>
+      <body>
+          <header>
+      <div class="logo">LOADIFY BY G4</div>
+
+      <nav>
+        <ul class="nav-links" id="navLinks">
+          <li><a href="#hero">Home</a></li>
+          <li><a href="#devices">Devices</a></li>
+          <li><a href="#eload">E-Load</a></li>
+          <li><a href="#clients-say">About Us</a></li> <!-- Updated href to match section ID -->
+          <li><a href="#" onclick="openContactModal(); return false;">Contact Us</a></li>
+        </ul>
+      </nav>
+
+      <div class="header-controls">
+        <button class="control-btn" onclick="openTrack()">Track Order</button>
+        <div id="cartIcon" onclick="toggleCart()">🛒 <span id="cartCount">0</span></div>
+        <button class="nav-toggle" onclick="toggleNav()"><span id="navIcon">☰</span></button>
+      </div>
+    </header>
+
+    <main>
+      <section id="hero">
+        <h1>Your Instant Load and Device Partner</h1>
+        <p>Connect instantly with the best devices and e-load services.</p>
+      </section>
+
+      <section id="devices">
+    <h2 class="section-title">Latest Devices</h2>
+
+    <div class="card-grid">
+      <!-- iPhone 11 -->
+      <div class="card" onclick="openModal('LDPhone11')" data-product="IPhone11">
+        <div class="card-image">
+          <img src="Images/Product/LD11.png" alt="LOADIFY Xtreme Phone">
+        </div>
+        <h3>LD PHONE 11</h3>
+        <p>A powerful and stylish smartphone featuring a 6.1-inch Liquid Retina display, dual-camera system for stunning photos, and the fast A13 Bionic chip for smooth performance. Designed for everyday use with long battery life and a sleek, durable build</p>
+        
+        <!-- Color Picker - Perfect Position -->
+        <div class="color-picker-section">
+          <label class="color-label">Color:</label>
+          <div class="color-options">
+            <div class="color-option black active" data-color="black" title="Black"></div>
+            <div class="color-option white" data-color="white" title="White"></div>
+            <div class="color-option blue" data-color="blue" title="Blue"></div>
+            <div class="color-option red" data-color="red" title="Red"></div>
+            <div class="color-option green" data-color="green" title="Green"></div>
+          </div>
+        </div>
+        
+        <button class="card-button" onclick="openModal('IPhone11'); event.stopPropagation();">
+          View Details
+        </button>
+      </div>
+
+      <!-- iPhone 12 -->
+      <div class="card" onclick="openModal('LDPhone12')" data-product="IPhone12">
+        <div class="card-image">
+          <img src="Images/Product/LD12.png" alt="LOADIFY Xtreme Phone">
+        </div>
+        <h3>LD PHONE 12</h3>
+        <p>A powerful and sleek smartphone featuring a 6.1-inch Super Retina XDR display, dual-camera system for stunning photos, and the fast A14 Bionic chip for smooth performance. Designed for everyday use with long battery life and a modern, durable build.</p>
+        
+        <div class="color-picker-section">
+          <label class="color-label">Color:</label>
+          <div class="color-options">
+            <div class="color-option black active" data-color="black" title="Black"></div>
+            <div class="color-option white" data-color="white" title="White"></div>
+            <div class="color-option blue" data-color="blue" title="Blue"></div>
+            <div class="color-option red" data-color="red" title="Red"></div>
+            <div class="color-option green" data-color="green" title="Green"></div>
+          </div>
+        </div>
+        
+        <button class="card-button" onclick="openModal('IPhone12'); event.stopPropagation();">
+          View Details
+        </button>
+      </div>
+
+      <!-- iPhone 13 -->
+      <div class="card" onclick="openModal('LDPhone13')" data-product="IPhone13">
+        <div class="card-image">
+          <img src="Images/Product/LD13.png" alt="LOADIFY Xtreme Phone">
+        </div>
+        <h3>LD PHONE 13</h3>
+        <p>A powerful and stylish smartphone featuring a 6.1-inch Super Retina XDR display, dual-camera system for stunning photos, and the fast A15 Bionic chip for smooth performance. Designed for everyday use with long battery life and a sleek, durable build</p>
+        
+        <div class="color-picker-section">
+          <label class="color-label">Color:</label>
+          <div class="color-options">
+            <div class="color-option black active" data-color="black" title="Black"></div>
+            <div class="color-option white" data-color="white" title="White"></div>
+            <div class="color-option blue" data-color="blue" title="Blue"></div>
+            <div class="color-option red" data-color="red" title="Red"></div>
+            <div class="color-option green" data-color="green" title="Green"></div>
+          </div>
+        </div>
+        
+        <button class="card-button" onclick="openModal('IPhone13'); event.stopPropagation();">
+          View Details
+        </button>
+      </div>
+
+      
+  </section>
+  <section id="eload">
+    <h2 class="section-title">E-Load Services</h2>
+    <div class="card-grid">
+
+      <div class="card" onclick="openModal('Call & Text Packages')">
+        <div class="card-icon">💬</div>
+        <h3>Call & Text Packages</h3>
+        <p>Unlimited all-net calls and texts.</p>
+        <button class="card-button" onclick="openModal('Call & Text Packages'); event.stopPropagation();">Load Now</button>
+      </div>
+
+      <div class="card" onclick="openModal('High-Speed Data')">
+        <div class="card-icon">📶</div>
+        <h3>High-Speed Data</h3>
+        <p>Fast and reliable mobile internet.</p>
+        <button class="card-button" onclick="openModal('High-Speed Data'); event.stopPropagation();">Load Now</button>
+      </div>
+
+      <div class="card" onclick="openModal('All-in-One Combo Load')">
+        <div class="card-icon">⚡</div>
+        <h3>All-in-One Combo Load</h3>
+        <p>Best value combo for all users.</p>
+        <button class="card-button" onclick="openModal('All-in-One Combo Load'); event.stopPropagation();">Load Now</button>
+      </div>
+    </div>
+  </section>
+
+      <!-- About Us section - now properly structured with correct ID -->
+      <section id="clients-say" class="clients-say">
+          <div class="container">
+              <div class="section-header" style="text-align:center; margin-bottom:80px;">
+                  <h2 style="color: #fff;">About Us</h2> <!-- Fixed color value -->
+                  <p style="color: #fff; font-size:18px; margin-top:10px;">Meet the team behind LOADIFY BY G4</p>
+              </div>
+              
+              <div class="testimonial-slider">
+                  <div class="slider-track">
+                      <!-- Testimonial 1 -->
+                      <div class="testimonial-slide top-left">
+                          <div class="single-testimonial-box">
+                              <div class="testimonial-img">
+                                  <img src="Images/About Us/FrancisEspeloa.jpg" alt="Francis Espeloa" />
+                              </div>
+                              <div class="testimonial-content">
+                                  <div class="testimonial-comment">
+                                      <h2>Francis Espeloa</h2>
+                                      <p>Francis Espeloa is the Lead Developer of this web page. He is in charge of creating and executing its primary features, making sure everything works smoothly, and improving the user experience. He also leads the development team, keeps the site up to date, and makes sure it runs well.</p>
+                                  </div>
+                                  <div class="testimonial-person">
+                                      <h3>Francis Espeloa</h3>
+                                      <span>General Trias, Cavite</span>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+
+                      <!-- Testimonial 2 -->
+                      <div class="testimonial-slide top-right">
+                          <div class="single-testimonial-box">
+                              <div class="testimonial-img">
+                                  <img src="Images/About Us/NeoDaveSy.jpg" alt="Neo Dave Sy" />
+                              </div>
+                              <div class="testimonial-content">
+                                  <div class="testimonial-comment">
+                                      <h2>Neo Dave Sy</h2>
+                                      <p>Neo Dave Sy is the one who handles all the products here at Loadify. He oversees product management, ensures quality control, and coordinates with suppliers to maintain top-notch inventory. His role is essential in keeping Loadify products reliable, innovative, and customer-focused.</p>
+                                  </div>
+                                  <div class="testimonial-person">
+                                      <h3>Neo Dave Sy</h3>
+                                      <span>Bacoor, Cavite</span>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+
+                      <!-- Testimonial 3 -->
+                      <div class="testimonial-slide top-left">
+                          <div class="single-testimonial-box">
+                              <div class="testimonial-img">
+                                  <img src="Images/About Us/CherryMaeCatan.png" alt="Cherry Mae Catan" />
+                              </div>
+                              <div class="testimonial-content">
+                                  <div class="testimonial-comment">
+                                      <h2>Cherry Mae Catan</h2>
+                                      <p>Cherry Mae Catan also helps manage all the products alongside Neo Dave Sy. Together, they oversee product sourcing, quality assurance, and inventory management to ensure every item at Loadify meets high standards. Their teamwork keeps operations efficient and customers satisfied.</p>
+                                  </div>
+                                  <div class="testimonial-person">
+                                      <h3>Cherry Mae Catan</h3>
+                                      <span>General Trias, Cavite</span>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+
+                      <!-- Testimonial 4 -->
+                      <div class="testimonial-slide top-left">
+                          <div class="single-testimonial-box">
+                              <div class="testimonial-img">
+                                  <img src="Images/About Us/MarkGutierrez.jpg" alt="Mark Gutierrez" />
+                              </div>
+                              <div class="testimonial-content">
+                                  <div class="testimonial-comment">
+                                      <h2>Mark Gutierrez</h2>
+                                      <p>Mark Gutierrez leads the promotional efforts at Loadify, creating marketing content and product descriptions that showcase the brand’s value. His work helps strengthen the company’s presence, connect with customers, and maintain a consistent and appealing brand image</p>
+                                  </div>
+                                  <div class="testimonial-person">
+                                      <h3>Mark Gutierrez</h3>
+                                      <span>General Trias, Cavite</span>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+
+                      <!-- Testimonial 5 -->
+                      <div class="testimonial-slide top-right">
+                          <div class="single-testimonial-box">
+                              <div class="testimonial-img">
+                                  <img src="Images/About Us/MarcMartinez.jpg" alt="Marc Martinez" />
+                              </div>
+                              <div class="testimonial-content">
+                                  <div class="testimonial-comment">
+                                      <h2>Marc Martinez</h2>
+                                      <p>Mark Martinez leads the development of this idea, overseeing its direction and execution. With the help of Francis Espeloa as the lead developer, they work together to build, refine, and deliver a functional and innovative solution.</p>
+                                  </div>
+                                  <div class="testimonial-person">
+                                      <h3>Marc Martinez</h3>
+                                      <span>Bacoor, Cavite</span>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </section>
+
+      <section id="contact">
+        <h2 class="section-title" onclick="openContactModal()" style="cursor:pointer;">Get in Touch (Click to view details)</h2>
+      </section>
+    </main>
+
+    <div id="tempMessage" role="status" aria-live="polite"></div>
+
+    <div id="modalOverlay" aria-hidden="true">
+      <div id="modalBox" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+        <button id="closeModal" onclick="closeModal()">✕</button>
+        <h2 id="modalTitle">Product</h2>
+        <div id="modalDetails"></div>
+
+        <div id="simOption" style="display:none; margin-top:12px;">
+          <label><input type="checkbox" id="addSimCard"> Add SIM Card (+₱50)</label>
+        </div>
+
+        <div class="modal-row">
+          <label for="modalQty">Quantity</label>
+          <input id="modalQty" class="modal-qty" type="number" min="1" value="1">
+        </div>
+
+        <button id="addCartBtn" onclick="addToCart()">Add to Cart</button>
+        <button id="buyCodBtn" style="display:none;" onclick="buyWithCOD()">Buy with Cash on Delivery</button>
+      </div>
+    </div>
+
+    <div id="cartPanel" aria-hidden="true">
+      <h2>Your Cart <button style="background:transparent;border:none;cursor:pointer;font-size:18px; color: #fff;" onclick="toggleCart()">✕</button></h2>
+      <div id="cartItems"></div>
+      <div id="cartFooter">
+        <p><strong>Total:</strong> <span id="cartTotal">₱0</span></p>
+        <button id="checkoutBtn" onclick="openCheckout()">Checkout</button>
+      </div>
+    </div>
+
+    <div id="checkoutModal" class="checkout-modal" aria-hidden="true">
+      <div class="checkout-box" role="dialog" aria-modal="true">
+        <h2>Checkout</h2>
+        <div style="margin-bottom:8px;" class="muted">Choose payment method — COD available only if there's a device in your order.</div>
+        <div class="payment-row">
+          <label><input type="radio" name="payment" value="gcash"> GCash</label>
+          <label><input type="radio" name="payment" value="paymaya"> PayMaya</label>
+          <label><input type="radio" name="payment" value="cod" id="codOption"> Cash on Delivery</label>
+        </div>
+
+        <h3 style="margin-top:12px;">Order Summary</h3>
+        <div id="orderSummary" style="max-height:220px; overflow:auto; padding:8px 6px; border-radius:8px; border:1px solid #eee;"></div>
+
+        <div style="margin-top:12px;">
+          <label>Full Name</label><br>
+          <input id="custName" type="text" style="width:100%; padding:8px; border-radius:8px; border:1px solid #ddd;">
+          <label style="margin-top:8px;">Phone / Contact</label><br>
+          <input id="custPhone" type="text" style="width:100%; padding:8px; border-radius:8px; border:1px solid #ddd;">
+          <label style="margin-top:8px;">Delivery Address</label><br>
+          <input id="custAddr" type="text" style="width:100%; padding:8px; border-radius:8px; border:1px solid #ddd;">
+        </div>
+
+        <button id="confirmCheckout" class="confirm-btn">Confirm Order</button>
+        <button onclick="closeCheckout()" class="close-btn">Cancel</button>
+      </div>
+    </div>
+
+    <div id="receiptModal" class="checkout-modal" aria-hidden="true">
+      <div class="checkout-box">
+        <h2>Order Receipt</h2>
+        <div id="receiptContent" class="receipt-box"></div>
+        <div style="display:flex; gap:8px; margin-top:12px;">
+          <button onclick="printReceipt()" class="confirm-btn">Print Receipt</button>
+          <button onclick="closeReceipt()" class="close-btn">Close</button>
+        </div>
+      </div>
+    </div>
+
+    <div id="trackModal" class="track-modal" aria-hidden="true">
+      <div class="track-box">
+        <h3>Track Order</h3>
+        <div style="margin-bottom:8px;">
+          <input id="trackInput" placeholder="Enter tracking number (e.g. LD-1700000000123)" style="width:100%; padding:8px; border-radius:8px; border:1px solid #ddd;">
+        </div>
+        <div id="trackOutput" style="min-height:40px;"></div>
+        <div style="margin-top:10px; display:flex; gap:8px;">
+          <button class="confirm-btn" onclick="lookupTracking()">Track</button>
+          <button class="close-btn" onclick="closeTrack()">Close</button>
+        </div>
+      </div>
+    </div>
+
+    <div id="adminPanel" class="admin-panel" aria-hidden="true">
+      <div class="admin-box">
+        <div style="display:flex; justify-content:space-between; align-items:center; gap:8px;">
+          <h2>Admin — Orders</h2>
+          <div>
+            <button onclick="closeAdmin()" class="close-btn">Close Admin</button>
+          </div>
+        </div>
+
+        <div class="admin-actions">
+          <button onclick="refreshOrders()" class="control-btn">Refresh</button>
+          <input id="adminFilter" placeholder="Filter by status or name" style="padding:8px; border-radius:8px; border:1px solid #ddd;">
+          <button onclick="applyAdminFilter()" class="control-btn">Apply</button>
+          <button onclick="clearOrdersConfirm()" style="background:#e91e63;color:white;padding:8px;border-radius:8px;">Clear All Orders</button>
+        </div>
+
+        <div id="adminOrdersList"></div>
+      </div>
+    </div>
+
+    <div id="contactModal" aria-hi  dden="true">
+      <div id="contactBox" role="dialog" aria-modal="true" aria-labelledby="contactTitle">
+        <button id="closeModal" onclick="closeContactModal()" style="float:right;">✕</button>
+        <h2 id="contactTitle" style="color:#e91e63;">Get In Touch</h2>
+        <p class="muted">We're here to help you connect!</p>
+
+        <div class="contact-item">
+          <div class="contact-icon">📞</div>
+          <div>
+            <strong>Text & Call</strong><br>
+            09771234567
+          </div>
+        </div>
+
+        <div class="contact-item">
+          <div class="contact-icon">📧</div>
+          <div>
+            <strong>Email</strong><br>
+            loadifybyg4@gmail.com
+          </div>
+        </div>
+
+        <div class="contact-item">
+          <div class="contact-icon">🌐</div>
+          <div>
+            <strong>Website</strong><br>
+            loadifybyg4.com
+          </div>
+        </div>
+
+        <div class="social-icons">
+          <a href="https://facebook.com/loadifybyg4" target="_blank" title="Facebook">f</a>
+          <a href="https://tiktok.com/@loadifybyg4" target="_blank" title="TikTok">♬</a>
+        </div>
+      </div>
+    </div>
+      </body>
+  </html>

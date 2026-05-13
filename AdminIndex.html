@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LOADIFY - Admin Dashboard</title>
+
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800;900&family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet" />
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="admin.css">
+    <link rel="shortcut icon" type="image/icon" href="Images/Logo.png"/>
+
+    <!-- JS (defer = faster load, no blocking) -->
+    <script src="MainJS.js" defer></script>
+</head>
+<body>
+    
+    <!-- Full Screen Admin Dashboard -->
+    <div id="adminPanel" class="admin-panel">
+        <div class="admin-box">
+
+            <!-- HEADER WITH CLOCK -->
+<div class="admin-header">
+
+    <!-- LOGO + TITLE -->
+    <div class="admin-brand">
+        <img src="Images/Logo.png" alt="Loadify Logo" class="admin-logo">
+
+        <div>
+            <h1>LOADIFY Admin Dashboard</h1>
+            <div class="subtitle">Real-time order management</div>
+        </div>
+    </div>
+
+    <!-- CYBERPUNK CLOCK -->
+    <div class="admin-clock" id="adminClock">
+        <div class="time" id="clockTime">--:--:--</div>
+        <div class="date" id="clockDate">Loading...</div>
+    </div>
+
+    <!-- BUTTONS -->
+    <div class="header-actions">
+        <a href="MainIndex.html" class="control-btn main-site-btn">🏠 Main Site</a>
+        <button onclick="refreshOrders()" class="control-btn">🔄 Refresh</button>
+        <button onclick="exportOrders()" class="control-btn export-btn">📤 Export CSV</button>
+        <button onclick="clearOrdersConfirm()" class="close-btn">🗑️ Clear All</button>
+    </div>
+
+</div>
+
+            <!-- FILTER -->
+            <div class="admin-actions">
+                <input 
+                    id="adminFilter" 
+                    class="filter-input"
+                    placeholder="🔍 Search orders by name, ID, status..."
+                    autocomplete="off"
+                >
+                <button onclick="applyAdminFilter()" class="control-btn">Filter</button>
+            </div>
+
+            <!-- ORDERS -->
+            <div id="adminOrdersList">
+                <!-- JS will inject content here -->
+            </div>
+
+            <!-- EMPTY STATE -->
+            <div id="noOrdersMsg" class="no-orders">
+                <div class="no-orders-icon">📦</div>
+                <h2>No Orders Yet</h2>
+                <p>Orders from the main site will appear here automatically via localStorage.</p>
+                <a href="MainIndex.html" class="control-btn go-main-btn">🛒 Go to Main Site</a>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- FLOAT MESSAGE -->
+    <div id="tempMessage" role="status" aria-live="polite"></div>
+
+    <script>
+        // CLOCK FUNCTIONALITY
+        function updateClock() {
+            const now = new Date();
+            
+            // Time formatting
+            const timeString = now.toLocaleTimeString('en-US', {
+                hour12: true,
+                hour: '2-digit',
+                minute: '2-digit',
+                second: '2-digit'
+            });
+            
+            // Date formatting
+            const dateString = now.toLocaleDateString('en-US', {
+                weekday: 'short',
+                year: 'numeric',
+                month: 'short',
+                day: 'numeric'
+            });
+            
+            document.getElementById('clockTime').textContent = timeString;
+            document.getElementById('clockDate').textContent = dateString;
+        }
+
+        window.onload = function() {
+            refreshOrders();
+            document.getElementById('adminFilter').focus();
+
+            // Initialize clock
+            updateClock();
+            setInterval(updateClock, 1000); // Update every second
+
+            /* 🔥 OPTIONAL (SAFE): real-time filter while typing */
+            document.getElementById('adminFilter')
+                .addEventListener('input', applyAdminFilter);
+        }
+    </script>
+
+</body>
+        <!-- RECEIPT MODAL -->
+<div id="receiptModal" class="receipt-modal">
+    
+    <div class="receipt-box">
+        
+        <!-- Receipt Content -->
+        <div id="receiptContent"></div>
+
+        <!-- Buttons -->
+        <div class="receipt-actions">
+            <button onclick="printReceipt()" class="control-btn">🖨️ Print</button>
+            <button onclick="closeReceipt()" class="close-btn">❌ Close</button>
+        </div>
+
+    </div>
+</div>
+</div>
+</html>

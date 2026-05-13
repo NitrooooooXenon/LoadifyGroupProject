@@ -1,0 +1,541 @@
+/* RESET */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* ROOT COLORS - MATCHED TO YOUR CYBERPUNK THEME */
+:root {
+    --primary-cyan: #00d4ff;
+    --primary-cyan-dark: #0099cc;
+    --dark-bg: #0a0a0f;
+    --card-bg: rgba(10, 10, 15, 0.95);
+    --card-inner: rgba(26, 26, 46, 0.8);
+    --text-main: #e2e8f0;
+    --text-sub: rgba(226, 232, 240, 0.75);
+    --border-glow: rgba(0, 212, 255, 0.3);
+}
+
+/* BODY */
+body {
+    font-family: 'Inter', 'SF Pro Display', -apple-system, "Poppins", system-ui, sans-serif;
+    background: var(--dark-bg);
+    min-height: 100vh;
+    padding: 20px;
+    color: var(--text-main);
+}
+
+/* PANEL - GLASSMORPHISM MATCH */
+.admin-panel {
+    display: flex;
+    justify-content: center;
+    backdrop-filter: blur(20px);
+}
+
+/* MAIN BOX - PERFECT GLASSMORPHISM */
+.admin-box {
+    width: 100%;
+    max-width: 1000px;
+    background: var(--card-bg);
+    backdrop-filter: blur(20px);
+    border-radius: 20px;
+    padding: 30px;
+    border: 1px solid var(--border-glow);
+    box-shadow: 0 25px 60px rgba(0, 212, 255, 0.15);
+}
+
+/* HEADER */
+.admin-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+    flex-wrap: wrap;
+    border-bottom: 1px solid var(--border-glow);
+    padding-bottom: 20px;
+}
+
+/* TITLE - CYAN GRADIENT */
+.admin-header h1 {
+    font-size: 32px;
+    font-weight: 800;
+    background: linear-gradient(135deg, var(--primary-cyan), var(--primary-cyan-dark));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+/* SUBTITLE */
+.subtitle {
+    color: var(--text-sub);
+    font-size: 14px;
+    margin-top: 4px;
+}
+
+/* BUTTON GROUP */
+.header-actions {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+/* BUTTON BASE */
+.control-btn,
+.close-btn,
+.main-site-btn,
+.export-btn {
+    border: none;
+    padding: 12px 20px;
+    border-radius: 50px;
+    font-size: 14px;
+    font-weight: 700;
+    cursor: pointer;
+    color: white;
+    text-decoration: none;
+    transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+    backdrop-filter: blur(10px);
+    border: 1px solid var(--border-glow);
+    font-family: inherit;
+}
+
+/* PRIMARY BUTTON - CYAN THEME */
+.control-btn,
+.main-site-btn {
+    background: linear-gradient(135deg, var(--primary-cyan), var(--primary-cyan-dark));
+    box-shadow: 0 8px 25px rgba(0, 212, 255, 0.3);
+}
+
+.control-btn:hover,
+.main-site-btn:hover {
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 0 15px 35px rgba(0, 212, 255, 0.4);
+}
+
+/* EXPORT BUTTON - GREEN ACCENT */
+.export-btn {
+    background: linear-gradient(135deg, #00C853, #00B140);
+    box-shadow: 0 8px 25px rgba(0, 200, 83, 0.3);
+    border-color: rgba(0, 200, 83, 0.4);
+}
+
+.export-btn:hover {
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 0 15px 35px rgba(0, 200, 83, 0.4);
+}
+
+/* CLOSE BUTTON - PINK ACCENT (matches your cards) */
+.close-btn {
+    background: linear-gradient(135deg, #e91e63, #c2185b);
+    box-shadow: 0 8px 25px rgba(233, 30, 99, 0.3);
+    border-color: rgba(233, 30, 99, 0.4);
+}
+
+.close-btn:hover {
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 0 15px 35px rgba(233, 30, 99, 0.4);
+}
+
+/* FILTER SECTION */
+.admin-actions {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 25px;
+    padding: 20px;
+    background: var(--card-inner);
+    border-radius: 16px;
+    border: 1px solid var(--border-glow);
+}
+
+/* INPUT - GLASSMORPHISM */
+.filter-input {
+    padding: 14px 18px;
+    border-radius: 12px;
+    border: 1px solid var(--border-glow);
+    background: rgba(10, 10, 15, 0.8);
+    color: var(--text-main);
+    flex: 1;
+    font-size: 15px;
+    backdrop-filter: blur(10px);
+    transition: all 0.3s ease;
+}
+
+.filter-input::placeholder {
+    color: var(--text-sub);
+}
+
+.filter-input:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px var(--border-glow);
+    border-color: var(--primary-cyan);
+}
+
+/* NO ORDERS */
+.no-orders {
+    display: none;
+    text-align: center;
+    padding: 80px 40px;
+    color: var(--text-sub);
+}
+
+.no-orders.show {
+    display: block;
+}
+
+.no-orders-icon {
+    font-size: 80px;
+    margin-bottom: 25px;
+    background: linear-gradient(135deg, var(--primary-cyan), var(--primary-cyan-dark));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    opacity: 0.7;
+}
+
+/* BUTTON INSIDE EMPTY STATE */
+.go-main-btn {
+    margin-top: 25px;
+    padding: 14px 30px;
+    font-size: 16px;
+}
+
+/* TEMP MESSAGE - POSITIONED LIKE MAIN SITE */
+#tempMessage {
+    position: fixed;
+    top: 18px;
+    left: 50%;
+    transform: translateX(-50%) translateY(-20px);
+    background: linear-gradient(135deg, var(--primary-cyan), var(--primary-cyan-dark));
+    color: white;
+    padding: 14px 25px;
+    border-radius: 50px;
+    opacity: 0;
+    font-weight: 700;
+    z-index: 2000;
+    transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+    box-shadow: 0 10px 30px rgba(0, 212, 255, 0.4);
+}
+
+#tempMessage.show {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+    .admin-box {
+        margin: 10px;
+        padding: 20px;
+    }
+    
+    .admin-header {
+        flex-direction: column;
+        gap: 20px;
+        text-align: center;
+    }
+    
+    .header-actions {
+        justify-content: center;
+    }
+    
+    .admin-actions {
+        flex-direction: column;
+    }
+}
+
+/* ULTIMATE CYBERPUNK CLOCK v2.0 */
+.admin-clock {
+    background: linear-gradient(145deg, 
+        rgba(0, 212, 255, 0.12), 
+        rgba(0, 153, 204, 0.08), 
+        rgba(138, 43, 226, 0.06)
+    );
+    backdrop-filter: blur(25px) saturate(180%);
+    border: 1px solid rgba(0, 212, 255, 0.4);
+    border-radius: 20px;
+    padding: 20px 28px;
+    box-shadow: 
+        0 20px 60px rgba(0, 212, 255, 0.25),
+        0 0 0 1px rgba(0, 212, 255, 0.1),
+        inset 0 1px 0 rgba(255, 255, 255, 0.15),
+        inset 0 -1px 0 rgba(0, 0, 0, 0.3);
+    min-width: 220px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.admin-clock:hover {
+    transform: translateY(-4px) scale(1.02);
+    box-shadow: 
+        0 30px 80px rgba(0, 212, 255, 0.35),
+        0 0 40px rgba(0, 212, 255, 0.2);
+    border-color: var(--primary-cyan);
+}
+
+/* GLITCH EFFECT CONTAINER */
+.clock-container {
+    position: relative;
+    height: 45px;
+}
+
+/* MAIN TIME DISPLAY */
+.admin-clock .time {
+    font-size: 32px;
+    font-weight: 900;
+    font-family: 'Orbitron', monospace;
+    background: linear-gradient(135deg, 
+        #00ffff 0%, 
+        var(--primary-cyan) 30%, 
+        #8a2be2 70%, 
+        #00d4ff 100%
+    );
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 8px;
+    letter-spacing: 3px;
+    position: relative;
+    text-shadow: 
+        0 0 10px rgba(0, 212, 255, 0.5),
+        0 0 20px rgba(0, 212, 255, 0.3);
+}
+
+/* GLITCH EFFECT */
+.time::before,
+.time::after {
+    content: attr(data-text);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.time::before {
+    animation: glitch-1 2s infinite;
+    color: #ff00ff;
+    z-index: -1;
+    text-shadow: -2px 0 #ff00ff;
+    clip-path: polygon(0 0, 100% 0, 100% 33%, 0 33%);
+}
+
+.time::after {
+    animation: glitch-2 2s infinite;
+    color: #00ff88;
+    z-index: -2;
+    text-shadow: -1px 0 #00ff88;
+    clip-path: polygon(0 67%, 100% 67%, 100% 100%, 0 100%);
+}
+
+@keyframes glitch-1 {
+    0%, 95% { transform: translate(0); }
+    97% { transform: translate(-2px, 2px); }
+    99% { transform: translate(-1px, -2px); }
+    100% { transform: translate(0); }
+}
+
+@keyframes glitch-2 {
+    0%, 90% { transform: translate(0); }
+    92% { transform: translate(2px, -1px); }
+    94% { transform: translate(-2px, 1px); }
+    96% { transform: translate(1px, -2px); }
+    100% { transform: translate(0); }
+}
+
+/* DATE DISPLAY */
+.admin-clock .date {
+    font-size: 14px;
+    color: rgba(226, 232, 240, 0.85);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    position: relative;
+}
+
+/* SCANLINES */
+.admin-clock::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: 
+        linear-gradient(0deg, transparent 50%, rgba(0,212,255,0.03) 50%),
+        linear-gradient(90deg, transparent 50%, rgba(0,212,255,0.02) 50%);
+    background-size: 100% 2px, 3px 100%;
+    pointer-events: none;
+    animation: scanline 4s linear infinite;
+}
+
+@keyframes scanline {
+    0% { 
+        transform: translateY(-100%) translateX(-100%);
+    }
+    100% { 
+        transform: translateY(100%) translateX(100%);
+    }
+}
+
+/* HEX GRID BACKGROUND */
+.admin-clock::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: 
+        radial-gradient(circle at 25% 25%, rgba(0,212,255,0.05) 2px, transparent 0),
+        radial-gradient(circle at 75% 75%, rgba(138,43,226,0.05) 2px, transparent 0);
+    background-size: 40px 40px;
+    opacity: 0.3;
+    pointer-events: none;
+}
+
+/* SECOND HAND INDICATOR */
+.second-indicator {
+    position: absolute;
+    top: 8px;
+    right: 12px;
+    width: 6px;
+    height: 6px;
+    background: var(--primary-cyan);
+    border-radius: 50%;
+    animation: pulse 2s infinite;
+    box-shadow: 0 0 8px var(--primary-cyan);
+}
+
+@keyframes pulse {
+    0%, 100% { opacity: 0.6; transform: scale(1); }
+    50% { opacity: 1; transform: scale(1.3); }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .admin-clock {
+        min-width: 190px;
+        padding: 16px 24px;
+    }
+    
+    .admin-clock .time {
+        font-size: 26px;
+        letter-spacing: 2px;
+    }
+    
+    .admin-clock:hover {
+        transform: none;
+    }
+}
+
+/* LOGO + BRAND GROUP */
+.admin-brand {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+/* LOGO STYLE */
+.admin-logo {
+    width: 65px;
+    height: auto;
+    filter: drop-shadow(0 0 10px rgba(0, 212, 255, 0.6));
+    transition: all 0.3s ease;
+}
+
+.admin-logo:hover {
+    transform: scale(1.08);
+    filter: drop-shadow(0 0 18px rgba(0, 212, 255, 0.9));
+}
+
+/* -------------------------
+   RECEIPT MODAL (CYBERPUNK STYLE)
+------------------------- */
+.receipt-modal{
+    display:none;
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,0.85);
+    backdrop-filter: blur(6px);
+    align-items:center;
+    justify-content:center;
+    z-index:9999;
+}
+
+/* glowing box */
+.receipt-box{
+    width:380px;
+    max-height:90vh;
+    overflow:auto;
+    padding:20px;
+    border-radius:16px;
+
+    /* cyberpunk dark glass */
+    background: rgba(15, 15, 25, 0.95);
+    border: 1px solid rgba(0, 255, 255, 0.25);
+
+    box-shadow:
+        0 0 15px rgba(0,255,255,0.2),
+        0 0 40px rgba(255,0,255,0.08);
+
+    color:#e0f7ff;
+    font-family: 'Poppins', sans-serif;
+}
+
+/* receipt header */
+.receipt-header h3{
+    margin:0;
+    color:#00f7ff;
+    letter-spacing:1px;
+}
+
+.receipt-box hr{
+    border: none;
+    height:1px;
+    background: linear-gradient(90deg, transparent, #00f7ff, transparent);
+    margin:12px 0;
+}
+
+/* muted text */
+.receipt-box .muted{
+    color:#8aa9b5;
+    font-size:12px;
+}
+
+/* items highlight */
+.receipt-box strong{
+    color:#ff4dff;
+}
+
+/* actions */
+.receipt-actions{
+    margin-top:15px;
+    display:flex;
+    justify-content:space-between;
+}
+
+/* buttons glow override */
+.receipt-actions .control-btn{
+    background: rgba(0,255,255,0.08);
+    border:1px solid #00f7ff;
+    color:#00f7ff;
+    box-shadow: 0 0 10px rgba(0,255,255,0.3);
+}
+
+.receipt-actions .control-btn:hover{
+    background:#00f7ff;
+    color:#000;
+}
+
+.receipt-actions .close-btn{
+    background: rgba(255,0,120,0.08);
+    border:1px solid #ff0077;
+    color:#ff0077;
+}
+
+.receipt-actions .close-btn:hover{
+    background:#ff0077;
+    color:#000;
+}

@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LOADIFY - Admin Dashboard</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="admin copy.css">
+    <link rel="shortcut icon" type="image/icon" href="Images/Logo.png"/>
+    <script src="MainJS.js" defer></script>
+</head>
+<body>
+    <!-- Full Screen Admin Dashboard -->
+    <div id="adminPanel" class="admin-panel">
+        <div class="admin-box">
+            <!-- HEADER WITH UPGRADED CLOCK -->
+            <div class="admin-header">
+                <!-- LOGO + TITLE -->
+                <div class="admin-brand">
+                    <div class="admin-logo-placeholder">
+                        <img src="Images/Logo.png" alt="Loadify Logo" class="admin-logo">
+                    </div>
+                    <div>
+                        <h1>LOADIFY Admin Dashboard</h1>
+                        <div class="subtitle">Real-time order management • Live analytics</div>
+                    </div>
+                </div>
+
+                <!-- CYBERPUNK 2.0 CLOCK -->
+                <div class="admin-clock" id="adminClock">
+                    <div class="time" id="clockTime">--:--:--</div>
+                    <div class="date" id="clockDate">Loading...</div>
+                </div>
+
+                <!-- UPGRADED BUTTONS -->
+                <div class="header-actions">
+                    <a href="MainIndex.html" class="control-btn main-site-btn">
+                        <span>🏠</span> Main Site
+                    </a>
+                    <button onclick="refreshOrders()" class="control-btn">
+                        <span>🔄</span> Refresh
+                    </button>
+                    <button onclick="exportOrders()" class="control-btn export-btn">
+                        <span>📤</span> Export CSV
+                    </button>
+                    <button onclick="clearOrdersConfirm()" class="control-btn danger-btn">
+                        <span>🗑️</span> Clear All
+                    </button>
+                </div>
+            </div>
+
+            <!-- FILTER BAR -->
+            <div class="admin-actions">
+                <div class="filter-container">
+                    <span class="filter-icon">🔍</span>
+                    <input 
+                        id="adminFilter" 
+                        class="filter-input"
+                        placeholder="Search orders by name, ID, status, phone..."
+                        autocomplete="off"
+                    >
+                </div>
+                <button onclick="applyAdminFilter()" class="control-btn filter-btn">
+                    <span>⚡</span> Filter
+                </button>
+                <button onclick="clearFilter()" class="control-btn secondary-btn">
+                    <span>✕</span> Clear
+                </button>
+            </div>
+
+            <!-- STATS DASHBOARD -->
+            <div class="stats-dashboard" id="statsDashboard" style="display: none;">
+                <div class="stat-card">
+                    <div class="stat-number" id="totalOrders">0</div>
+                    <div class="stat-label">Total Orders</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number revenue" id="totalRevenue">₱0</div>
+                    <div class="stat-label">Total Revenue</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number pending" id="pendingOrders">0</div>
+                    <div class="stat-label">Pending</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number completed" id="completedOrders">0</div>
+                    <div class="stat-label">Completed</div>
+                </div>
+            </div>
+
+            <!-- ORDERS LIST -->
+            <div id="adminOrdersList" class="orders-list">
+                <!-- Dynamic content injected by JS -->
+            </div>
+
+            <!-- EMPTY STATE -->
+            <div id="noOrdersMsg" class="no-orders">
+                <div class="no-orders-icon">📦</div>
+                <h2>No Orders Yet</h2>
+                <p>Orders from the main site will appear here automatically via localStorage.</p>
+                <div class="empty-actions">
+                    <a href="MainIndex.html" class="control-btn primary-btn go-main-btn">🛒 Go to Main Site</a>
+                    <button class="control-btn secondary-btn" onclick="refreshOrders()">🔄 Refresh</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- FLOAT MESSAGE -->
+    <div id="tempMessage" role="status" aria-live="polite"></div>
+
+    <!-- RECEIPT MODAL -->
+    <div id="receiptModal" class="receipt-modal">
+        <div class="receipt-box">
+            <div id="receiptContent" class="receipt-content"></div>
+            <div class="receipt-actions">
+                <button onclick="printReceipt()" class="control-btn primary-btn">🖨️ Print Receipt</button>
+                <button onclick="closeReceipt()" class="control-btn danger-btn">❌ Close</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // CLOCK FUNCTIONALITY (Enhanced)
+        function updateClock() {
+            const now = new Date();
+            const timeString = now.toLocaleTimeString('en-US', {
+                hour12: false,
+                hour: '2-digit',
+                minute: '2-digit',
+                second: '2-digit'
+            });
+            const dateString = now.toLocaleDateString('en-US', {
+                weekday: 'short',
+                year: 'numeric',
+                month: 'short',
+                day: 'numeric'
+            });
+            document.getElementById('clockTime').textContent = timeString;
+            document.getElementById('clockDate').textContent = dateString;
+        }
+
+        // Clear filter function
+        function clearFilter() {
+            document.getElementById('adminFilter').value = '';
+            applyAdminFilter();
+        }
+
+        window.onload = function() {
+            refreshOrders();
+            document.getElementById('adminFilter').focus();
+            updateClock();
+            setInterval(updateClock, 1000);
+            
+            // Real-time filter
+            document.getElementById('adminFilter').addEventListener('input', applyAdminFilter);
+        }
+    </script>
+</body>
+</html>
